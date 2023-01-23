@@ -3,6 +3,8 @@ import ru.netology.person.Person;
 import ru.netology.person.Sex;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,8 +21,21 @@ public class Main {
                     Education.values()[new Random().nextInt(Education.values().length)])
             );
         }
-        System.out.println(names);
-        System.out.println(persons);
+        //Список людей младше 18
+        System.out.println("Список людей младше 18");
+        persons.stream().filter((s)-> s.getAge() < 18).collect(Collectors.toList()).forEach(System.out::println);
+        System.out.println();
+
+        //Список призывников с 18 по 20 лет
+        System.out.println("список призывников");
+        persons.stream().filter((s)-> s.getAge() >= 18 && s.getAge() < 27 && s.getSex() == Sex.MAN).collect(Collectors.toList()).forEach(System.out::println);
+        System.out.println();
+
+        //Список потенциально работоспособных людей с высшим образованием
+        System.out.println("Список потенциально работоспособных людей с высшим образованием");
+        persons.stream().filter(((s)-> s.getAge() >= 18 && s.getAge() < 65 && s.getSex() == Sex.MAN || s.getAge() >= 18 && s.getAge() < 60 && s.getSex() == Sex.WOMAN)).collect(Collectors.toList()).forEach(System.out::println);
+        System.out.println();
+
 
     }
     }
