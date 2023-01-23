@@ -33,7 +33,7 @@ public class Main {
 
         //Список потенциально работоспособных людей с высшим образованием
         System.out.println("Список потенциально работоспособных людей с высшим образованием");
-        persons.stream().filter(((s)-> s.getAge() >= 18 && s.getAge() < 65 && s.getSex() == Sex.MAN || s.getAge() >= 18 && s.getAge() < 60 && s.getSex() == Sex.WOMAN)).collect(Collectors.toList()).forEach(System.out::println);
+        persons.stream().filter(((s)-> s.getAge() >= 18 && s.getAge() < 65 && s.getSex() == Sex.MAN || s.getAge() >= 18 && s.getAge() < 60 && s.getSex() == Sex.WOMAN)).sorted(Comparator.comparing(Person::getName)).collect(Collectors.toList()).forEach(System.out::println);
         System.out.println();
 
 
